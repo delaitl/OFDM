@@ -1,5 +1,8 @@
 proute = 1
 
+#HONTEUX PLAGIAT DE CE CITE/
+"""https://dspillustrations.com/pages/posts/misc/python-ofdm-example.html"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -67,13 +70,40 @@ for b3 in [0, 1]:
                 plt.text(Q.real, Q.imag+0.2, "".join(str(x) for x in B), ha='center')
                 
                 
-                
+plt.show()                   
 #######################CHANNEL RESPONSE##########################
                 
 channelResponse = np.array([1, 0, 0.3+0.3j])  # the impulse response of the wireless channel
 H_exact = np.fft.fft(channelResponse, K)
 plt.plot(allCarriers, abs(H_exact))
+plt.show()   
+SNRdb = 25  # signal to noise-ratio in dB at the receiver
 
-SNRdb = 25  # signal to noise-ratio in dB at the receiver 
-plt.show()                
-print("proute")
+#######################RANDOM SYMBOLS##########################
+
+bits = np.random.binomial(n=1, p=0.5, size=(payloadBits_per_OFDM, ))
+print ("Bits count: ", len(bits))
+print ("First 20 bits: ", bits[:20])
+print ("Mean of bits (should be around 0.5): ", np.mean(bits))
+    
+
+#######################SERIAL->PARALLEL##########################
+"""
+On met par paquet la séquence précédemment créée (paquet de 4 car 1symb = 4 bits
+"""
+def SP(bits):
+    return bits.reshape((len(dataCarriers), mu))
+bits_SP = SP(bits)
+print ("First 5 bit groups")
+print (bits_SP[:5,:])
+
+
+
+#######################MAPPING##########################
+
+def Mapping(bits):
+    return np.array([mapping_table[tuple(b)] for b in bits])
+QAM = Mapping(bits_SP)
+print ("First 5 QAM symbols and bits:")
+print (bits_SP[:5,:])
+print (QAM[:5])
