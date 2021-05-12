@@ -10,7 +10,7 @@ Our code is separated in notebooks
  - BEN_OFDM contains the basic chain, was meant for testing
  - BEN_OFDM_Marre is some copy of it
  - BEN_Step1-2-3 Contains the actual code for the three main questions
- -Ben_Step3_MSE contains the code of step3 but adapted to make the required plots
+ - Ben_Step3_MSE contains the code of step3 but adapted to make the required plots
 
 Happy reading :) 
 
