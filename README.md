@@ -16,4 +16,3 @@ Happy reading :)
 
 Ben and Louis
 
-![](https://i.imgur.com/AAX9TkW.png)
